@@ -36,7 +36,8 @@ defmodule ShipReplication.Mixfile do
       {:phoenix, "~> 1.3.2"},
       {:phoenix_pubsub, "~> 1.0"},
       {:phoenix_ecto, "~> 3.2"},
-      {:postgrex, ">= 0.0.0"},
+      {:mssql_ecto, "~> 1.1.0"},
+      {:mssqlex, "~> 1.0.0"},
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
@@ -53,8 +54,7 @@ defmodule ShipReplication.Mixfile do
   defp aliases do
     [
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
-      "ecto.reset": ["ecto.drop", "ecto.setup"],
-      "test": ["ecto.create --quiet", "ecto.migrate", "test"]
+      "ecto.reset": ["ecto.drop", "ecto.setup"]
     ]
   end
 end

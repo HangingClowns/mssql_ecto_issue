@@ -13,16 +13,25 @@ config :logger, level: :warn
 host = System.get_env("AE_DB_HOST") || "localhost"
 if host == "localhost" do
   config :ship_replication, ShipReplication.Repo,
-    adapter: Ecto.Adapters.Postgres,
+    adapter: MssqlEcto,
     database: "ship_replication_test",
-    hostname: "localhost",
-    pool: Ecto.Adapters.SQL.Sandbox
+    username: "sa",
+    password: "reallyStrongPwd123",
+    hostname: "mssql_db",
+    instance_name: "MSSQLSERVER",
+    port: "1433",
+    pool: Ecto.Adapters.SQL.Sandbox,
+    ownership_pool: DBConnection.Poolboy,
+    pool_size: 10
 else
   config :ship_replication, ShipReplication.Repo,
-    adapter: Ecto.Adapters.Postgres,
-    username: "postgres",
-    password: "postgres",
+    adapter: MssqlEcto,
     database: "ship_replication_test",
+    username: "sa",
+    password: "reallyStrongPwd123",
     hostname: host,
-    pool: Ecto.Adapters.SQL.Sandbox
+    instance_name: "MSSQLSERVER",
+    port: "1433",
+    pool: Ecto.Adapters.SQL.Sandbox,
+    ownership_pool: DBConnection.Poolboy
 end

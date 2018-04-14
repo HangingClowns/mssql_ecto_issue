@@ -50,9 +50,11 @@ config :phoenix, :stacktrace_depth, 20
 
 # Configure your database
 config :ship_replication, ShipReplication.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "ship_replication_dev",
-  hostname: "localhost",
+  adapter: MssqlEcto,
+  database: "sql_server_db",
+  username: "sa",
+  password: "reallyStrongPwd123",
+  hostname: "mssql_db",
+  instance_name: "MSSQLSERVER",
+  port: "1433",
   pool_size: 10
